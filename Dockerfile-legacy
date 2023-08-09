@@ -210,7 +210,7 @@ ARG ORT_VERSION
 COPY --from=build /usr/local/src/ort/cli/build/install/ort /opt/ort
 
 # Support to run the helper-cli like `docker run --entrypoint /opt/ort/bin/orth ort`.
-COPY --from=build --link /usr/local/src/ort/helper-cli/build/scripts/orth /opt/ort/bin/
-COPY --from=build --link /usr/local/src/ort/helper-cli/build/libs/helper-cli-$ORT_VERSION.jar /opt/ort/lib/
+COPY --from=build /usr/local/src/ort/helper-cli/build/scripts/orth /opt/ort/bin/
+COPY --from=build /usr/local/src/ort/helper-cli/build/libs/helper-cli-$ORT_VERSION.jar /opt/ort/lib/
 
 ENTRYPOINT ["/opt/ort/bin/ort"]
